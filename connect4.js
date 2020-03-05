@@ -5,8 +5,8 @@
  * board fills (tie)
  */
 
-var WIDTH = 7;
-var HEIGHT = 6;
+const WIDTH = 7;
+const HEIGHT = 6;
 
 var currPlayer = 1; // active player: 1 or 2
 var board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -15,8 +15,9 @@ var board = []; // array of rows, each row is array of cells  (board[y][x])
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
 
-function makeBoard() {
+function makeBoard(width = 7, height = 6) {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+  return Array(6).fill(Array(7).fill(null));
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
