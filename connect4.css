@@ -14,15 +14,14 @@
   width: 80%;
   height: 80%;
   border-radius: 50%;
-  background: white;
 }
 
-.piece.red {
+.p1 {
   /* TODO: make into circles */
   background: red;
 }
 
-.piece.blue {
+.p2 {
   /* TODO: make into circles */
   background:blue;
 }
