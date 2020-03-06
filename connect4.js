@@ -17,7 +17,8 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
-  return Array(HEIGHT).fill(Array(WIDTH).fill(null));
+  board = Array(HEIGHT).fill(Array(WIDTH).fill(null));
+  
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
@@ -66,8 +67,14 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 function findSpotForCol(x) {
+  console.log(board);
+  for (let i = HEIGHT - 1; i >= 0; i--) {
 
-  return 0;
+    if (board[i][x] === null) {
+      return i;
+    }
+  }
+  return null;
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
@@ -94,7 +101,7 @@ function handleClick(evt) {
   let x = +evt.target.id;  //5
 
   // get next spot in column (if none, ignore click)
-  let y = findSpotForCol(Number(x));
+  let y = findSpotForCol(x);
   if (y === null) {
     return;
   } else {
