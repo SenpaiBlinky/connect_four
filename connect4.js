@@ -66,7 +66,7 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 function findSpotForCol(x) {
-  // TODO: write the real version of this, rather than always returning 0
+
   return 0;
 }
 
@@ -78,6 +78,7 @@ function placeInTable(y, x) {
   pieceDiv.classList.add(`p${currPlayer}`);
   let currentCell = document.getElementById(`${y}-${x}`);
   currentCell.append(pieceDiv);
+
 }
 
 /** endGame: announce game end */
@@ -90,12 +91,14 @@ function endGame(msg) {
 
 function handleClick(evt) {
   // get x from ID of clicked cell
-  let x = +evt.target.id;
+  let x = +evt.target.id;  //5
 
   // get next spot in column (if none, ignore click)
-  let y = findSpotForCol(x);
+  let y = findSpotForCol(Number(x));
   if (y === null) {
     return;
+  } else {
+    board[y][x] = currPlayer;
   }
 
   // place piece in board and add to HTML table
@@ -107,11 +110,15 @@ function handleClick(evt) {
     return endGame(`Player ${currPlayer} won!`);
   }
 
-  // check for tie
-  // TODO: check if all cells in board are filled; if so call, call endGame
+  // checks for tie
+  // check if all cells in board are filled; if so call, call endGame
+  if(!(board.every(([y,x]) => y !== null && x !== null))) {
+     alert("board is full!");
+     endGame();
+  }
 
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
+  currPlayer = currPlayer === 1 ? 2 : 1;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
