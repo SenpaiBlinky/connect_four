@@ -4,6 +4,7 @@
   width: 100px;
   height: 100px;
   border: solid 1px #666;
+  background: plum;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
@@ -16,6 +17,14 @@
   border-radius: 50%;
 }
 
+body {
+  background: black;
+}
+
+.pink {
+  background-color: lightblue;
+}
+
 .p1 {
   /* TODO: make into circles */
   background: red;
@@ -23,7 +32,7 @@
 
 .p2 {
   /* TODO: make into circles */
-  background:blue;
+  background:lightskyblue;
 }
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
