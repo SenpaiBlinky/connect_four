@@ -17,8 +17,15 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
-  board = Array(HEIGHT).fill(Array(WIDTH).fill(null));
-  
+  // board = Array(HEIGHT).fill(Array(WIDTH).fill(null));
+
+  for (let i = 0; i < HEIGHT; i++) {
+    board.push([])
+    for (let j = 0; j < WIDTH; j++) {
+      let subArrayElement = board[i]
+      subArrayElement.push(null)
+    }
+  }
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
@@ -92,6 +99,12 @@ function placeInTable(y, x) {
 
 function endGame(msg) {
   // TODO: pop up alert message
+  setTimeout(function() {
+    alert(msg);
+  }, 500);
+
+  let top = document.getElementById("column-top");
+  top.removeEventListener("click", handleClick);
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -119,7 +132,7 @@ function handleClick(evt) {
 
   // checks for tie
   // check if all cells in board are filled; if so call, call endGame
-  if(!(board.every(([y,x]) => y !== null && x !== null))) {
+  if((board.every(([y,x]) => y !== null && x !== null))) {
      alert("board is full!");
      endGame();
   }
